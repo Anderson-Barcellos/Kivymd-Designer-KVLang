@@ -72,7 +72,7 @@ class KvApp(MDApp):
 
 If there's an error during the dynamic loading of the `.kv` file, it catches the exception and displays an error message within the application window.
 
-## Limitations
+## Limitations AS IS
 
 - The application does not handle complex `.kv` files that require additional Python classes or methods.
 - The window size is fixed and cannot be resized by the user.
