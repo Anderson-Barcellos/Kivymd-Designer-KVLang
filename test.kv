@@ -1,0 +1,103 @@
+#:import DictProperty kivy.properties
+#:import Animation kivy.animation.Animation
+
+<ChatWidget>:
+    read_button: read_button
+    orientation: "horizontal"
+    spacing: dp(5)
+    height: dp(80)
+    adaptive_height: True
+    size_hint_y: None
+    size_hint_x: 1
+    elevation: 2
+    shadow_radius: 2
+    opacity: 0
+    radius: 20
+    md_bg_color: "#01b7ff"
+
+    MDIconButton:
+
+        icon: root.icon
+        adaptive_size: True
+        icon_size: "30dp"
+        padding: 5,2,0,2
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    MDTextField:
+        id:text_field
+        adaptive_height: True
+        multiline: True
+        size_hint_y: None
+        mode: "fill"
+        font_size: "16dp"
+        fill_color_normal: "#ffffff"
+        fill_color_focus:   "#ffffff"
+        line_color_normal: 0, 0, 0, 0
+        line_color_focua: 0, 0, 0, 0
+        text_color_normal:0,0,0,1
+        readonly: True
+        radius: 0,10,10,0
+
+MDBottomNavigation:
+    size_hint: 1, 1
+
+    MDBottomNavigationItem:
+        text: "Whisper"
+        icon: "gpt.png"
+        height: "100dp"
+        padding: 20,20,20,0
+        md_bg_color: "#000000"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        radius: 20,20,0,0
+        size_hint: 1, 1
+        
+
+        ScrollView:
+            size_hint: 0.85, 0.85                
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            padding: 20
+           
+
+            MDList:
+                id: container
+                size_hint: 1, 0.85
+                spacing: dp(10)
+                padding: dp(15)
+                radius: 20,20,20,20 
+                md_bg_color:  "#003951"
+
+        MDBoxLayout:
+            padding:20
+            orientation: "horizontal"
+            size_hint: 0.85, 0.17
+            height: "150dp"        
+            pos_hint: {"center_x": 0.5, "center_y:": 0.5}
+            md_bg_color: "#003951"
+            radius: 20,20,0,0
+            spacing: 12   
+            MDTextField:
+                id: text_field
+                mode: "fill"
+                size_hint: 0.35,1
+                height: "80dp"
+                multiline: True
+                text: ""
+                font_style: "subtitle1"
+                radius: 10,10,10,10
+                text_color_normal: "#0392ff"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                line_color_normal: 0, 0, 0, 0
+                line_color_focus: 0, 0, 0, 0
+                active_line: False
+                font_size: "15sp"
+                opacity: 1
+            MDIconButton:
+                icon: "send"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                md_bg_color: "#0392ff"
+                size_hint: 0.05, 0.5
+                height: "40dp"
+                on_release: container.add_widget(ChatWidget(text=text_field.text))
+            
+               
+ 
